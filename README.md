@@ -42,21 +42,23 @@ Add your trained model to `models/best_model.pth`.
 ```bash
 pip install -r requirements.txt
 uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
-
+```
 
 Run with Docker (CPU)
-docker build -t brain-tumor-api .
+``` bash docker build -t brain-tumor-api .
 docker run -p 8000:8000 brain-tumor-api
+```
 
 Run with GPU (Recommended)
-
 Requires NVIDIA GPU and NVIDIA Container Toolkit:
-
+``` bash
 docker build -t brain-tumor-api-gpu .
 docker run --gpus all -p 8000:8000 brain-tumor-api-gpu
-
+```
 Or using Docker Compose
+``` bash
 docker-compose up --build
+```
 
 📤 API Endpoints
 Method	Endpoint	Description
@@ -65,7 +67,6 @@ GET	/health	Health check
 GET	/docs	Interactive Swagger UI
 
 Example request:
-
 curl -X POST "http://localhost:8000/predict" -F "file=@/path/to/scan.nii.gz" --output tumor_mask.nii.gz
 
 📊 MLflow Integration
@@ -73,18 +74,15 @@ curl -X POST "http://localhost:8000/predict" -F "file=@/path/to/scan.nii.gz" --o
 Metrics and models are logged to ./mlruns.
 
 Start MLflow UI:
-
+```
 mlflow ui --backend-store-uri ./mlruns
-
+```
 
 Open in browser: http://localhost:5000
 
 Tracked items:
-
 ✅ Loss & Dice score
-
 ✅ Hyperparameters (LR, batch size, epochs)
-
 ✅ Saved models
 
 ⚙ Technologies Used
