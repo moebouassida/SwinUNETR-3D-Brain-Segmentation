@@ -1,0 +1,5 @@
+.history
+data/
+mlruns/
+runs/scripts/
+src/__pycache__

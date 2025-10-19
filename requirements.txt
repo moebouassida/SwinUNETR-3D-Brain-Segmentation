@@ -1,0 +1,8 @@
+torch>=2.0
+monai>=1.1
+numpy
+nibabel
+matplotlib
+tqdm
+mlflow
+scikit-image

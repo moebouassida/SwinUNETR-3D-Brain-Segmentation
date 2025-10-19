@@ -1,0 +1,46 @@
+# =========================
+# Data
+# =========================
+data_dir: "./data/Task01_BrainTumour"
+json_list: "./data/Task01_BrainTumour/dataset.json"
+root_dir: "./runs"             # Where checkpoints & artifacts are saved
+experiment_name: "swin_unetr_msd"
+fold: 1
+
+# =========================
+# Model
+# =========================
+in_channels: 4
+out_channels: 4
+feature_size: 48
+use_checkpoint: True
+
+# =========================
+# Training
+# =========================
+roi: [128, 128, 128]
+batch_size: 2
+sw_batch_size: 2
+infer_overlap: 0.5
+max_epochs: 100
+val_every: 10
+lr: 1e-4
+weight_decay: 1e-5
+
+# =========================
+# Runtime
+# =========================
+num_workers: 4
+device: "cuda"
+seed: 42
+
+# =========================
+# Resume Options
+# =========================
+# Optional: specify manual checkpoint to resume from
+resume_ckpt: ""    # e.g., "./runs/best_fold1.pt"
+
+# =========================
+# MLflow/W&B
+# =========================
+mlflow_tracking_uri: ""        # leave blank for local mlruns
