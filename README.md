@@ -1,7 +1,7 @@
 # 🧠 3D Brain Segmentation with SwinUNETR  
 ![Python](https://img.shields.io/badge/Python-3.10-blue) ![Docker](https://img.shields.io/badge/Docker-GPU-green) ![License](https://img.shields.io/badge/License-MIT-orange)  
 
-**3D brain tumor segmentation using SwinUNETR with FastAPI, GPU Docker, MLflow tracking, and XAI visualization.**  
+**3D brain tumor segmentation using SwinUNETR with FastAPI, GPU Docker, MLflow tracking.**  
 
 🚧 **Live demo is currently in progress!**
 
@@ -44,12 +44,12 @@ pip install -r requirements.txt
 uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-Run with Docker (CPU)
+### Run with Docker (CPU)
 ``` bash docker build -t brain-tumor-api .
 docker run -p 8000:8000 brain-tumor-api
 ```
 
-Run with GPU (Recommended)
+### Run with GPU (Recommended)
 Requires NVIDIA GPU and NVIDIA Container Toolkit:
 ``` bash
 docker build -t brain-tumor-api-gpu .
@@ -60,7 +60,7 @@ Or using Docker Compose
 docker-compose up --build
 ```
 
-📤 API Endpoints
+### 📤 API Endpoints
 Method	Endpoint	Description
 POST	/predict	Upload MRI (.nii/.nii.gz) → returns tumor mask
 GET	/health	Health check
@@ -69,34 +69,36 @@ GET	/docs	Interactive Swagger UI
 Example request:
 curl -X POST "http://localhost:8000/predict" -F "file=@/path/to/scan.nii.gz" --output tumor_mask.nii.gz
 
-📊 MLflow Integration
-
+### 📊 MLflow Integration
 Metrics and models are logged to ./mlruns.
 
 Start MLflow UI:
 ```
 mlflow ui --backend-store-uri ./mlruns
+Open in browser: http://localhost:5000
 ```
 
-Open in browser: http://localhost:5000
+### Tracked items:
 
-Tracked items:
 ✅ Loss & Dice score
 ✅ Hyperparameters (LR, batch size, epochs)
 ✅ Saved models
 
-⚙ Technologies Used
-Component	Technology
-Backend API	FastAPI
-Medical AI	MONAI + PyTorch
-Model Type	3D SwinUNETR
-Experiment Tracking	MLflow
-Containerization	Docker + NVIDIA Runtime
-Input Format	NIfTI (BRATS MRI)
-Output Format	NIfTI Segmentation Mask
+### ⚙ Technologies Used
 
-🔄 Roadmap
+| Component |	Technology |
+|---------------|-------------|
+| Backend API |	FastAPI |
+| Medical AI |	MONAI + PyTorch |
+| Model Type |	3D SwinUNETR |
+| Experiment | Tracking	MLflow |
+| Containerization |	Docker + NVIDIA Runtime |
+| Input Format |	NIfTI (BRATS MRI) |
+| Output Format |	NIfTI Segmentation Mask |
+
+### 🔄 Roadmap
+
 ✅ GPU-enabled Docker image
 ✅ MLflow integration
 📊 Web dashboard for predictions & visualization (in progress)
-☁ Cloud deployment AWS
+☁ Cloud deployment (AWS)
