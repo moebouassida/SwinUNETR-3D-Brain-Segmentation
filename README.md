@@ -97,8 +97,10 @@ Open in browser: http://localhost:5000
 | Output Format |	NIfTI Segmentation Mask |
 
 ### 🔄 Roadmap
-
 ✅ GPU-enabled Docker image
+
 ✅ MLflow integration
+
 📊 Web dashboard for predictions & visualization (in progress)
+
 ☁ Cloud deployment (AWS)
